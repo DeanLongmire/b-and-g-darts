@@ -1,1 +1,46 @@
-/* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
+.image-container {
+  display: flex;
+  justify-content: center;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: center;
+}
+
+.menu-content {
+  align-items: center;
+  background-color: gray;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
+  justify-content: space-between;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 31px;
+  max-width: 420px;
+  max-height: 184px;
+  padding-bottom: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 10px;
+}
+
+.menu-title {
+  text-align: center;
+}
+
+.route-button {
+  border-radius: 25px;
+  height: 35%;
+  min-height: 21px;
+  width: 123px;
+  font-size: 3vh;
+}
+
+@media (width < 400px) {
+  .menu-content {
+    width: 75vw; 
+  }
+}
