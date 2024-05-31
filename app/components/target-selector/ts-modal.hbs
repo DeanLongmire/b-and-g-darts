@@ -1,0 +1,47 @@
+<div class="ts-modal">
+    <div class="ts-modal-container">
+        <div class="ts-number-box">
+            {{#if (and @isRandom (not this.didRandomize))}}
+                {{#each @randomTargets as |target|}}
+                    <div class="target">
+                        {{#if (eq target 25)}}
+                            B
+                        {{else}}
+                            {{target}}
+                        {{/if}}
+                    </div>
+                {{/each}}
+            {{else}}
+                {{#if @isRandom}}
+                    {{#each this.targets as |target|}}
+                        <div class="target">
+                            {{#if (eq target 25)}}
+                                B
+                            {{else}}
+                                {{target}}
+                            {{/if}}
+                        </div>
+                    {{/each}}
+                {{else}}
+                    {{#each this.targetsAsText as |target index|}}
+                        <input class="target-input" value={{target}} {{on "blur" (fn this.update index)}}>
+                    {{/each}}
+                {{/if}}
+            {{/if}}
+        </div>
+        <div class="ts-buttons" style="width: 50%;">
+            {{#if @isRandom}}
+                <div class="ts-button" {{on "click" this.randomize}}>
+                    Randomize!
+                </div>
+                <div class="ts-button" {{on "click" this.closeModal}}>
+                    OK
+                </div>
+            {{else}}
+                <div class="ts-button" style="margin-right: auto; margin-left: auto;" {{on "click" @closeModal}}>
+                    OK
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</div>

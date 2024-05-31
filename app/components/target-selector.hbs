@@ -1,0 +1,38 @@
+<div class="ar-players-container">
+    <div class="ar-players-content">
+        <div class="ar-header" style="font-weight: bold;">
+            Set Targets
+        </div>
+        <div>
+            <div class="ar-header">
+                {{#each this.targets as |target|}}
+                    {{#if (eq target 25)}}
+                        B
+                    {{else}}
+                        {{target}}
+                    {{/if}}
+                {{/each}}
+            </div>
+            <div class="ts-buttons">
+                <div {{on "click" (fn this.openModal true)}}>
+                    Random
+                </div>
+                <div {{on "click" (fn this.openModal false)}}>
+                    Manual
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{#if this.modalIsOpen}}
+    <TargetSelector::TsModal 
+        @closeModal={{this.closeModal}} 
+        @isRandom={{this.isRandom}} 
+        @randomizeTargets={{this.randomizeTargets}} 
+        @targets={{this.targets}} 
+        @tmp={{this.continuousTask}}
+        @randomTargets={{this.randomTargets}}
+        @update={{this.update}}
+    />
+{{/if}}
