@@ -1,3 +1,19 @@
+.ar-header {
+  font-size: clamp(16px, 4vw, 25px);
+}
+
+.ar-players-container {
+  display: flex;
+  justify-content: center;
+}
+
+.ar-players-content {
+  display: flex;
+  justify-content: space-between;
+  max-width: 765px;
+  width: 80vw;
+}
+
 .card-container {
   align-items: center;
   border: 5px solid #888;
@@ -69,6 +85,11 @@
   height: 500px;
   margin-left: 10vw;
   margin-right: 10vw;
+}
+
+.ts-buttons {
+  display: flex;
+  justify-content: space-between;
 }
 
 @media (width < 400px) {
