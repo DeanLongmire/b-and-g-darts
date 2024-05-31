@@ -1,0 +1,30 @@
+<div class="ar-players-container">
+    <div class="ar-players-content">
+        <div class="ar-header" style="font-weight: bold;">
+            Set Targets
+        </div>
+        <div>
+            <div class="ar-header">
+                {{#each this.targets as |target|}}
+                    {{#if (eq target 25)}}
+                        B
+                    {{else}}
+                        {{target}}
+                    {{/if}}
+                {{/each}}
+            </div>
+            <div class="ts-buttons">
+                <div {{on "click" this.openModal}}>
+                    Random
+                </div>
+                <div>
+                    Manual
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{#if this.modalIsOpen}}
+    <TargetSelector::TsModal />
+{{/if}}
