@@ -4,8 +4,12 @@
             Add/Remove Players
         </div>
         <div>
-            <PlayerSetup::NewPlayer />
+            <PlayerSetup::NewPlayer @onClick={{this.openPlayerModal}} />
             <PlayerSetup::AddPlayer />
         </div>
     </div>
 </div>
+
+{{#if this.playerModalOpen}}
+    <PlayerSetup::NewPlayerModal />
+{{/if}}

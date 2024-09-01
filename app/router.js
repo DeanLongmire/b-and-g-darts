@@ -9,7 +9,6 @@ export default class Router extends EmberRouter {
 Router.map(function () {
   this.route('home');
   this.route('game-selection', () => {
-      this.route('game-selection/cricket-setup');
-    }
-  );
+    this.route('game-selection/cricket-setup');
+  });
 });

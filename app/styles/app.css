@@ -73,6 +73,32 @@
   text-align: center;
 }
 
+.player-modal-container {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  height: 30vh;
+  min-height: 120px;
+  width: 40vw;
+}
+
+.player-name-entry-input {
+  font-size: 3vw;
+  width: 50%;
+}
+
+.player-name-entry-text {
+  font-size: 3vw;
+  width: 50%;
+}
+
+.player-name-entry {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
 .route-button {
   border-radius: 25px;
   height: 35%;
@@ -147,6 +173,10 @@
 @media (width < 400px) {
   .menu-content {
     width: 75vw;
+  }
+
+  .player-modal-container {
+    height: 30vh;
   }
 
   .ts-modal-container {

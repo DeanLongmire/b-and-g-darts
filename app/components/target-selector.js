@@ -35,7 +35,7 @@ export default class TargetSelectorComponent extends Component {
     }
 
     for (let j = 0; j < targets.length; j++) {
-      if(targets[j] == parseInt(value)) {
+      if (targets[j] == parseInt(value)) {
         console.log('Target already exists');
         return;
       }
@@ -51,7 +51,8 @@ export default class TargetSelectorComponent extends Component {
       this.randomTargets = A(this.targets);
 
       this.randomTargets.forEach((_, index) => {
-        this.randomTargets[index] = shuffledValues[index % shuffledValues.length];
+        this.randomTargets[index] =
+          shuffledValues[index % shuffledValues.length];
       });
 
       yield timeout(10);
