@@ -12,6 +12,6 @@ export default class GameCardComponent extends Component {
   openGame() {
     const gameName = this.game.name.toLowerCase();
 
-    this.router.transitionTo(`${gameName}-setup`);
+    this.router.transitionTo(`game-selection/${gameName}-setup`);
   }
 }

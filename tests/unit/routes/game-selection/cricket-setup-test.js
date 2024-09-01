@@ -1,11 +1,11 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'b-and-g-darts/tests/helpers';
 
-module('Unit | Route | cricket-setup', function (hooks) {
+module('Unit | Route | game-selection/cricket-setup', function (hooks) {
   setupTest(hooks);
 
   test('it exists', function (assert) {
-    let route = this.owner.lookup('route:cricket-setup');
+    let route = this.owner.lookup('route:game-selection/cricket-setup');
     assert.ok(route);
   });
 });

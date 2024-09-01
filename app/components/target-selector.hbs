@@ -5,7 +5,7 @@
         </div>
         <div>
             <div class="ar-header">
-                {{#each this.targets as |target|}}
+                {{#each this.game.targets as |target|}}
                     {{#if (eq target 25)}}
                         B
                     {{else}}
@@ -30,7 +30,7 @@
         @closeModal={{this.closeModal}} 
         @isRandom={{this.isRandom}} 
         @randomizeTargets={{this.randomizeTargets}} 
-        @targets={{this.targets}} 
+        @game={{this.game}} 
         @tmp={{this.continuousTask}}
         @randomTargets={{this.randomTargets}}
         @update={{this.update}}

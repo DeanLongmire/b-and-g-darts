@@ -2,51 +2,51 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { A } from '@ember/array';
-import { task,timeout } from 'ember-concurrency';
+import { task, timeout } from 'ember-concurrency';
 
 export default class TargetSelectorTsModalComponent extends Component {
-    @tracked runNumbers = this.args.isRandom;
-    @tracked didRandomize = false;
-    @tracked randomTargets = A();
-    
-    get targets() {
-        return A(this.args.targets);
-    }
+  @tracked runNumbers = this.args.isRandom;
+  @tracked didRandomize = false;
+  @tracked randomTargets = A();
 
-    get availableValues() {
-        return Array.from({ length: 20 }, (_, i) => i + 1);
-    }
+  get game() {
+    return this.args.game;
+  }
 
-    get targetsAsText() {
-        let targets = this.targets.slice();
+  get availableValues() {
+    return Array.from({ length: 20 }, (_, i) => i + 1);
+  }
 
-        targets.forEach((_, index) => {
-            if(targets[index] == 25 || targets[index] == '25') {
-                targets[index] = 'B';
-            }
-        });
+  get targetsAsText() {
+    let targets = this.game.targets.slice();
 
-        return targets;
-    }
+    targets.forEach((_, index) => {
+      if (targets[index] == 25 || targets[index] == '25') {
+        targets[index] = 'B';
+      }
+    });
 
-    @action 
-    closeModal() {
-        this.didRandomize = false;
-        this.args.tmp.cancelAll();
-        this.args.closeModal();
-    }
+    return targets;
+  }
 
-    @action 
-    randomize() {
-        this.didRandomize = true;
-        this.args.tmp.cancelAll();
-        this.args.randomizeTargets();
-    }
+  @action
+  closeModal() {
+    this.didRandomize = false;
+    this.args.tmp.cancelAll();
+    this.args.closeModal();
+  }
 
-    @action
-    update(i) {
-        let value = event.target.value;
-        console.log('Trying to update the ' + i + 'th target to ' + value);
-        this.args.update(i, value);
-    }
+  @action
+  randomize() {
+    this.didRandomize = true;
+    this.args.tmp.cancelAll();
+    this.args.randomizeTargets();
+  }
+
+  @action
+  update(i, event) {
+    let value = event.target.value;
+    console.log('Trying to update the ' + i + 'th target to ' + value);
+    this.args.update(i, value);
+  }
 }

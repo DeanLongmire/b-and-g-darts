@@ -1,0 +1,18 @@
+export default [
+  {
+    name: 'Cricket',
+    description: 'First to close everything out',
+  },
+  {
+    name: 'Comming Soon...',
+    description: '',
+  },
+  {
+    name: 'Comming Soon...',
+    description: '',
+  },
+  {
+    name: 'Comming Soon...',
+    description: '',
+  },
+];

@@ -14,6 +14,10 @@ export default class TargetSelectorComponent extends Component {
     return Array.from({ length: 20 }, (_, i) => i + 1);
   }
 
+  get game() {
+    return this.args.game;
+  }
+
   shuffleArray(array) {
     const newArray = array.slice();
     for (let i = newArray.length - 1; i > 0; i--) {
@@ -24,48 +28,59 @@ export default class TargetSelectorComponent extends Component {
   }
 
   update(i, value) {
-    let targets = this.targets.slice();
+    let targets = this.game.targets.slice();
+
+    if (value === 'B' || value === 'b') {
+      value = 25;
+    }
+
+    for (let j = 0; j < targets.length; j++) {
+      if(targets[j] == parseInt(value)) {
+        console.log('Target already exists');
+        return;
+      }
+    }
 
     targets[i] = parseInt(value);
-    this.targets = A(targets);
+    this.game.targets = A(targets);
   }
 
   @task(function* () {
-        while(true) {
-            const shuffledValues = this.shuffleArray(this.availableValues.concat(25));
-            let targets = A(this.targets);
-        
-            targets.forEach((_, index) => {
-              this.targets[index] = shuffledValues[index % shuffledValues.length];
-            });
-        
-            this.randomTargets = A(targets);
-            yield timeout(10);
-        }
-    }) continuousTask;
+    while (true) {
+      const shuffledValues = this.shuffleArray(this.availableValues.concat(25));
+      this.randomTargets = A(this.targets);
+
+      this.randomTargets.forEach((_, index) => {
+        this.randomTargets[index] = shuffledValues[index % shuffledValues.length];
+      });
+
+      yield timeout(10);
+    }
+  })
+  continuousTask;
 
   @action
   randomizeTargets() {
     const shuffledValues = this.shuffleArray(this.availableValues.concat(25));
-    let targets = A(this.targets);
+    let targets = this.game.targets.slice();
 
     targets.forEach((_, index) => {
-      this.targets[index] = shuffledValues[index % shuffledValues.length];
+      targets[index] = shuffledValues[index % shuffledValues.length];
     });
 
     targets.sort((a, b) => a - b);
 
-    this.targets = A(targets);
+    this.game.targets = A(targets);
   }
 
   @action
   openModal(isRandom) {
     this.isRandom = isRandom;
 
-    if(this.isRandom) {
+    if (this.isRandom) {
       this.continuousTask.perform();
     }
-    
+
     this.modalIsOpen = true;
     this.runNumbers = true;
   }

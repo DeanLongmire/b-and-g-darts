@@ -13,7 +13,7 @@
                 {{/each}}
             {{else}}
                 {{#if @isRandom}}
-                    {{#each this.targets as |target|}}
+                    {{#each this.game.targets as |target|}}
                         <div class="target">
                             {{#if (eq target 25)}}
                                 B
